@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render
-from account.forms import LoginForm, UserRegistrationForm
+from account.forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
 from account.models import Profile
 
 
@@ -41,3 +41,14 @@ def register(request):
         user_form = UserRegistrationForm()
     return render(request,
                   'account/register.html',{'user_form':user_form})
+
+
+@login_required
+def edit(request):
+    if request.method == "POST":
+        pass
+    else:
+        user_form = UserEditForm(instance=request.user)
+        profile_name = ProfileEditForm(instance=request.user.profile)
+    return render(request,'account/edit.html',
+                  {'user_form':user_form,'profile_name':profile_name})
