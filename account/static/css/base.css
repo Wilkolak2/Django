@@ -275,3 +275,19 @@ img.user-detail {
     font-style:italic;
     color:#ccc;
 }
+
+.user form{
+    display: inline;
+}
+.user button{
+    background-color: #0ac33e ;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.user button:hover{
+    background-color: rgba(255,255,255,0.2);
+}

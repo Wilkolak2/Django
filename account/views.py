@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -46,7 +47,16 @@ def register(request):
 @login_required
 def edit(request):
     if request.method == "POST":
-        pass
+        user_form = UserEditForm(instance=request.user,data=request.POST)
+        profile_name = ProfileEditForm(instance=request.user.profile,
+                                       data=request.POST,
+                                       files=request.FILES)
+        if user_form.is_valid() and profile_name.is_valid():
+            user_form.save()
+            profile_name.save()
+            messages.success(request,"pomyslnie zaktualizowano konto")
+        else:
+            messages.error(request,"nie mozna zaktualizowa konta")
     else:
         user_form = UserEditForm(instance=request.user)
         profile_name = ProfileEditForm(instance=request.user.profile)
