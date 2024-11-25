@@ -3,7 +3,7 @@ from tkinter import image_names
 
 import requests
 from django import forms
-from django.core.files import ContentFile
+from django.core.files.base import ContentFile
 from django.utils.text import slugify
 from urllib3 import request
 

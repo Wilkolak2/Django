@@ -4,4 +4,9 @@
 {% block content %}
     <h1>Panel główny</h1>
     <p>Witaj w panelu głównym. Mozesz <a href="{% url 'edit' %}">edytowac swoje konto.</a></p>
+
+    <p>
+    Przeciągnij poniższy przycisk na pasek zakładek, aby móc dodawać zdjęcia.
+    <a href="javascript:{% include "images/bookmarklet_launcher.js" %}" class="button">Bookmarklet</a>
+    </p>
 {% endblock %}
